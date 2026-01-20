@@ -96,9 +96,19 @@
       text-decoration: none;
       font-weight: bold;
       border-radius: 4px;
+      cursor: pointer;
     }
     .cta:hover {
       background-color: var(--black);
+    }
+
+    /* Contato: escondido por padrão (exibido ao clicar no botão) */
+    #contato.contact-hidden {
+      display: none;
+    }
+    #contato {
+      border-top: 3px solid var(--gold);
+      padding-top: 25px;
     }
   </style>
 </head>
@@ -180,19 +190,21 @@
       <li>Pessoas que preferem aulas online com acompanhamento próximo</li>
     </ul>
 
-    <a href="#contato" class="cta">Entre em contato para agendar uma aula</a>
+    <a href="#" class="cta" id="cta-contato">Entre em contato para agendar uma aula</a>
   </section>
 
-    <section id="contato">
+    <section id="contato" class="contact-hidden">
     <h2>Contato</h2>
     <p>
       Para agendar aulas ou tirar dúvidas, envie uma mensagem:
     </p>
     <ul>
-      <li><strong>E-mail:</strong> <a href="mailto:danielfbrasil@gmail.com">danielfbrasil@gmail.com</a></li>
-      <li><strong>WhatsApp:</strong> <a href="https://wa.me/5585999951392" target="_blank" rel="noopener noreferrer">Clique para conversar</a></li>
+      <li><strong>E-mail:</strong> <a href="mailto:SEU_EMAIL_AQUI">SEU_EMAIL_AQUI</a></li>
+      <li><strong>WhatsApp:</strong> <a href="https://wa.me/SEU_NUMERO_COM_DDI" target="_blank" rel="noopener noreferrer">Clique para conversar</a></li>
     </ul>
-    
+    <p style="font-size: 0.95em;">
+      Observação: substitua os campos acima pelo seu e-mail e número no formato internacional (ex.: 5585XXXXXXXXX).
+    </p>
   </section>
 
   <footer>
@@ -205,6 +217,21 @@
       Imagem do banner: Castelo de Neuschwanstein (domínio público / Wikimedia Commons).
     </p>
   </footer>
+
+  <script>
+    (function () {
+      var btn = document.getElementById('cta-contato');
+      var contato = document.getElementById('contato');
+      if (!btn || !contato) return;
+
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        contato.classList.remove('contact-hidden');
+        // rola suavemente até o bloco de contato
+        contato.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    })();
+  </script>
 
 </body>
 </html>
